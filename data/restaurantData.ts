@@ -1,0 +1,156 @@
+export type Restaurant = {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  style: 'Buffet' | 'À la Carte' | 'Bar' | 'Cafe';
+  openTime: string; // 24hr format
+  mealPeriod: 'Breakfast' | 'Lunch' | 'Dinner' | 'All Day';
+  location: 'Sunrise' | 'Nizuc';
+};
+
+export const moonPalaceRestaurants: Restaurant[] = [
+  // 🌅 SUNRISE
+  {
+    id: 'sun-01',
+    name: 'La Gondola',
+    description: 'Italian cuisine with breakfast buffet and à la carte dinner service.',
+    image: require('@/assets/lagondola.jpg'),
+    style: 'À la Carte',
+    openTime: '07:00',
+    mealPeriod: 'All Day',
+    location: 'Sunrise',
+  },
+  {
+    id: 'sun-02',
+    name: 'Momo',
+    description: 'Asian cuisine with teppanyaki tables and sushi; dinner only.',
+    image: require('@/assets/momo.jpg'),
+    style: 'À la Carte',
+    openTime: '17:30',
+    mealPeriod: 'Dinner',
+    location: 'Sunrise',
+  },
+  {
+    id: 'sun-03',
+    name: 'Bugambilias',
+    description: 'Mexican and international buffet for all meals.',
+    image: require('@/assets/bugambilias.jpg'),
+    style: 'Buffet',
+    openTime: '07:00',
+    mealPeriod: 'All Day',
+    location: 'Sunrise',
+  },
+  {
+    id: 'sun-04',
+    name: 'Asadero',
+    description: 'Grilled meats and seafood buffet for lunch and dinner.',
+    image: require('@/assets/asadero.jpg'),
+    style: 'Buffet',
+    openTime: '12:00',
+    mealPeriod: 'Lunch',
+    location: 'Sunrise',
+  },
+  {
+    id: 'sun-05',
+    name: 'Pier 8',
+    description: 'Seafood restaurant near Sunrise pool.',
+    image: require('@/assets/pier8.jpg'),
+    style: 'À la Carte',
+    openTime: '12:00',
+    mealPeriod: 'Lunch',
+    location: 'Sunrise',
+  },
+  {
+    id: 'sun-06',
+    name: 'Pepe’s Pizza',
+    description: 'Wood-fired pizza by the slice, lunch and dinner.',
+    image: require('@/assets/pepespizza.jpg'),
+    style: 'À la Carte',
+    openTime: '11:30',
+    mealPeriod: 'Lunch',
+    location: 'Sunrise',
+  },
+  {
+    id: 'sun-07',
+    name: 'Los Columpios',
+    description: 'Sushi lounge bar with small bites and drinks.',
+    image: require('@/assets/loscolumpios.jpg'),
+    style: 'Bar',
+    openTime: '17:00',
+    mealPeriod: 'Dinner',
+    location: 'Sunrise',
+  },
+  {
+    id: 'sun-08',
+    name: 'Bistro Café',
+    description: 'Coffee, crepes, and pastries open 24 hours.',
+    image: require('@/assets/bistro.jpg'),
+    style: 'Cafe',
+    openTime: '00:00',
+    mealPeriod: 'All Day',
+    location: 'Sunrise',
+  },
+
+  // 🌴 NIZUC
+  {
+    id: 'niz-01',
+    name: 'El Manglar',
+    description: 'International buffet for breakfast, lunch, and dinner.',
+    image: 'https://via.placeholder.com/300x150',
+    style: 'Buffet',
+    openTime: '07:00',
+    mealPeriod: 'All Day',
+    location: 'Nizuc',
+  },
+  {
+    id: 'niz-02',
+    name: 'Arrecifes',
+    description: 'Brazilian steakhouse with rodizio-style dinner.',
+    image: 'https://via.placeholder.com/300x150',
+    style: 'À la Carte',
+    openTime: '17:30',
+    mealPeriod: 'Dinner',
+    location: 'Nizuc',
+  },
+  {
+    id: 'niz-03',
+    name: 'Los Caporales',
+    description: 'Traditional Mexican cuisine à la carte.',
+    image: 'https://via.placeholder.com/300x150',
+    style: 'À la Carte',
+    openTime: '17:00',
+    mealPeriod: 'Dinner',
+    location: 'Nizuc',
+  },
+  {
+    id: 'niz-04',
+    name: 'Palapa Delfines',
+    description: 'Poolside grill with bar snacks and drinks.',
+    image: 'https://via.placeholder.com/300x150',
+    style: 'Bar',
+    openTime: '12:00',
+    mealPeriod: 'Lunch',
+    location: 'Nizuc',
+  },
+  {
+    id: 'niz-05',
+    name: 'Palapa Pelicanos',
+    description: 'Buffet lunch and sushi à la carte for dinner.',
+    image: 'https://via.placeholder.com/300x150',
+    style: 'Buffet',
+    openTime: '12:00',
+    mealPeriod: 'Lunch',
+    location: 'Nizuc',
+  },
+  {
+    id: 'niz-06',
+    name: 'Sweet & Coffee',
+    description: 'Coffee and pastry shop open 24/7.',
+    image: 'https://via.placeholder.com/300x150',
+    style: 'Cafe',
+    openTime: '00:00',
+    mealPeriod: 'All Day',
+    location: 'Nizuc',
+  },
+];
