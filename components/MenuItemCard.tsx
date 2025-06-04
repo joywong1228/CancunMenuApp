@@ -9,17 +9,17 @@ type Props = {
 export default function MenuItemCard({ item }: Props) {
   return (
     <View style={styles.card}>
-        {/* <Text style={styles.meta}>
-        {item.category}
-        {item.priceUSD ? ` • $${item.priceUSD.toFixed(2)}` : ''}
-      </Text> */}
       <Text style={styles.name}>
         {item.name.en} / {item.name.zh}
       </Text>
-      <Text style={styles.description}>{item.description.en}</Text>
-      <Text style={styles.descriptionZh}>{item.description.zh}</Text>
 
-      
+      {item.description?.en?.trim() && (
+        <Text style={styles.description}>{item.description.en}</Text>
+      )}
+
+      {item.description?.zh?.trim() && (
+        <Text style={styles.descriptionZh}>{item.description.zh}</Text>
+      )}
     </View>
   );
 }

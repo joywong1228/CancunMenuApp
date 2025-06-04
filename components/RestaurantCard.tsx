@@ -14,9 +14,22 @@ type Props = {
   name: string;
   image?: ImageSourcePropType;
   description?: string;
+  style?: string;
+  openTime?: string;
+  mealPeriod?: string;
+  dressCode?: string;
 };
 
-export default function RestaurantCard({ id, name, image, description }: Props) {
+export default function RestaurantCard({
+  id,
+  name,
+  image,
+  description,
+  style,
+  openTime,
+  mealPeriod,
+  dressCode,
+}: Props) {
   const router = useRouter();
 
   return (
@@ -25,6 +38,10 @@ export default function RestaurantCard({ id, name, image, description }: Props) 
         {image && <Image source={image} style={styles.image} />}
         <Text style={styles.name}>{name}</Text>
         {description && <Text style={styles.description}>{description}</Text>}
+        {style && <Text style={styles.meta}>🍽 {style}</Text>}
+        {mealPeriod && <Text style={styles.meta}>🕐 {mealPeriod}</Text>}
+        {openTime && <Text style={styles.meta}>⏰ {openTime}</Text>}
+        {dressCode && <Text style={styles.meta}>👕 {dressCode}</Text>}
       </View>
     </TouchableOpacity>
   );
@@ -57,5 +74,11 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 13,
     color: '#666',
+    marginBottom: 6,
+  },
+  meta: {
+    fontSize: 12,
+    color: '#444',
+    marginTop: 2,
   },
 });

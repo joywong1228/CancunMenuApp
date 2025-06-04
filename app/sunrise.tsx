@@ -16,28 +16,34 @@ export default function SunrisePage() {
   const [selectedFilter, setSelectedFilter] = useState<'All' | 'Buffet' | 'À la Carte'>('All');
 
   // Filter + group by mealPeriod
-  const filteredData = useMemo(() => {
-    const filtered = moonPalaceRestaurants.filter(
-      (r) =>
-        r.location === 'Sunrise' &&
-        (selectedFilter === 'All' || r.style === selectedFilter)
-    );
+const filteredData = useMemo(() => {
+  const filtered = moonPalaceRestaurants.filter(
+    (r) =>
+      r.location === 'Sunrise' &&
+      (selectedFilter === 'All' || r.style.includes(selectedFilter))
+  );
 
-    const grouped: Record<string, Restaurant[]> = {
-      Breakfast: [],
-      Lunch: [],
-      Dinner: [],
-      'All Day': [],
-    };
+  const grouped: Record<string, Restaurant[]> = {
+    Breakfast: [],
+    Lunch: [],
+    Dinner: [],
+    'All Day': [],
+  };
 
-    filtered.forEach((r) => {
-      grouped[r.mealPeriod]?.push(r);
+  filtered.forEach((r) => {
+    const periods = r.mealPeriod.split(',').map((p) => p.trim());
+    periods.forEach((period) => {
+      if (grouped[period]) {
+        grouped[period].push(r);
+      }
     });
+  });
 
-    return Object.entries(grouped)
-      .filter(([_, items]) => items.length > 0)
-      .map(([title, data]) => ({ title, data }));
-  }, [selectedFilter]);
+  return Object.entries(grouped)
+    .filter(([_, items]) => items.length > 0)
+    .map(([title, data]) => ({ title, data }));
+}, [selectedFilter]);
+
 
   return (
     <View style={styles.container}>

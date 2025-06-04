@@ -12,12 +12,12 @@ import {
 import { moonPalaceRestaurants } from '@/data/restaurantData';
 import { globalMenu } from '@/data/globalMenu';
 import MenuItemCard from '@/components/MenuItemCard';
+import CategoryCard from '@/components/CategoryCard';
 
 export default function RestaurantDetailPage() {
   const { id } = useLocalSearchParams();
   const restaurant = moonPalaceRestaurants.find((r) => r.id === id);
   const [showInfo, setShowInfo] = useState(true);
-
 
   const restaurantMenu = useMemo(() => {
     return globalMenu.filter((item) => item.restaurantId === id);
@@ -79,33 +79,44 @@ export default function RestaurantDetailPage() {
 
       {/* Main Scroll Content */}
       <ScrollView contentContainerStyle={styles.scrollContent}>
-    <TouchableOpacity onPress={() => setShowInfo(!showInfo)} style={styles.infoHeader}>
-  <Text style={styles.infoHeaderText}>
-    {showInfo ? '▲ Restaurant Info' : '▼ Show Restaurant Info'}
-  </Text>
-</TouchableOpacity>
+        <TouchableOpacity onPress={() => setShowInfo(!showInfo)} style={styles.infoHeader}>
+          <Text style={styles.infoHeaderText}>
+            {showInfo ? '▲ Restaurant Info' : '▼ Show Restaurant Info'}
+          </Text>
+        </TouchableOpacity>
 
-{showInfo && (
-  <View style={styles.infoContainer}>
-    {restaurant.image && (
-      <Image source={restaurant.image} style={styles.image} />
-    )}
-    <Text style={styles.title}>{restaurant.name}</Text>
-    <Text style={styles.desc}>{restaurant.description}</Text>
-    <Text style={styles.meta}>Style: {restaurant.style}</Text>
-    <Text style={styles.meta}>Open Time: {restaurant.openTime}</Text>
-    <Text style={styles.meta}>Meal: {restaurant.mealPeriod}</Text>
-  </View>
-)}
+        {showInfo && (
+          <View style={styles.infoContainer}>
+            {restaurant.image && (
+              <Image source={restaurant.image} style={styles.image} />
+            )}
+            <Text style={styles.title}>{restaurant.name}</Text>
+            <Text style={styles.desc}>{restaurant.description}</Text>
+            <Text style={styles.meta}>Style: {restaurant.style}</Text>
+            <Text style={styles.meta}>Open Time: {restaurant.openTime}</Text>
+            <Text style={styles.meta}>Meal: {restaurant.mealPeriod}</Text>
+          </View>
+        )}
 
-        {filteredMenu.length > 0 && (
+        {selectedCategory !== 'All' && (
+          <CategoryCard category={selectedCategory} />
+        )}
+
+        {filteredMenu.length > 0 ? (
           <>
             <Text style={styles.menuHeader}>🍽 Menu</Text>
             {filteredMenu.map((item) => (
               <MenuItemCard key={item.id} item={item} />
             ))}
           </>
-        )}
+        ) : selectedCategory === 'All' ? (
+          <View style={styles.emptyCard}>
+            <Text style={styles.emptyTitle}>No menu available</Text>
+            <Text style={styles.emptyText}>
+              We're still cooking up something delicious for this restaurant.
+            </Text>
+          </View>
+        ) : null}
       </ScrollView>
     </View>
   );
@@ -118,7 +129,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: 20,
-    paddingTop: 70, // leave space for sticky bar
+    paddingTop: 40,
     paddingBottom: 40,
   },
   stickyBar: {
@@ -126,7 +137,6 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    paddingTop: 30,
     paddingBottom: 10,
     backgroundColor: '#fff',
     zIndex: 10,
@@ -176,31 +186,47 @@ const styles = StyleSheet.create({
     color: '#555',
     marginBottom: 4,
   },
- menuHeader: {
-  fontSize: 20,
-  fontWeight: '700',
-  marginTop: 5, // was 24
-  marginBottom: 8, // was 10
-  borderBottomWidth: 1,
-  borderColor: '#ddd',
-},
-
+  menuHeader: {
+    fontSize: 20,
+    fontWeight: '700',
+    marginTop: 5,
+    marginBottom: 8,
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+  },
   infoHeader: {
-  paddingVertical: 10,
-  alignItems: 'center',
-  borderBottomWidth: 1,
-  borderColor: '#ccc',
-  marginBottom: 10,
-},
-
-infoHeaderText: {
-  fontSize: 16,
-  fontWeight: '600',
-  color: '#333',
-},
-
-infoContainer: {
-  marginBottom: 3,
-},
-
+    paddingVertical: 10,
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderColor: '#ccc',
+    marginBottom: 10,
+  },
+  infoHeaderText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
+  },
+  infoContainer: {
+    marginBottom: 3,
+  },
+  emptyCard: {
+    backgroundColor: '#fef3f3',
+    borderColor: '#f5c2c7',
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 16,
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  emptyTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#c00',
+    marginBottom: 6,
+  },
+  emptyText: {
+    fontSize: 14,
+    color: '#a33',
+    textAlign: 'center',
+  },
 });
