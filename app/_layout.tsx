@@ -1,5 +1,10 @@
-import { Stack } from 'expo-router';
+import { Stack } from "expo-router";
+import { FavoriteProvider } from "@/contexts/FavoriteContext";
 
 export default function Layout() {
-  return <Stack />;
+  return (
+    <FavoriteProvider>
+      <Stack />
+    </FavoriteProvider>
+  );
 }

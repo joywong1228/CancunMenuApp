@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
@@ -6,8 +6,8 @@ import {
   Image,
   ImageSourcePropType,
   TouchableOpacity,
-} from 'react-native';
-import { useRouter } from 'expo-router';
+} from "react-native";
+import { useRouter } from "expo-router";
 
 type Props = {
   id: string;
@@ -51,34 +51,34 @@ const styles = StyleSheet.create({
   card: {
     marginBottom: 12,
     padding: 12,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#eee',
-    shadowColor: '#000',
+    borderColor: "#eee",
+    shadowColor: "#000",
     shadowOpacity: 0.05,
     shadowRadius: 4,
     elevation: 2,
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 150,
     borderRadius: 8,
     marginBottom: 8,
   },
   name: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: "700",
     marginBottom: 4,
   },
   description: {
     fontSize: 13,
-    color: '#666',
+    color: "#666",
     marginBottom: 6,
   },
   meta: {
     fontSize: 12,
-    color: '#444',
+    color: "#444",
     marginTop: 2,
   },
 });
