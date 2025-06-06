@@ -1,50 +1,51 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+# 🌮 Cancun Menu App
 
-1. Install dependencies
+A mobile app built with **React Native + Expo** to explore, favorite, and preview dishes from Moon Palace Cancun’s resort restaurants.
 
-   ```bash
-   npm install
-   ```
+## ✨ Features
 
-2. Start the app
+* 📖 Browse bilingual (English/Chinese) restaurant menus
+* 💗 Double-tap to favorite dishes with animated heart
+* 🔍 Swipe left/right to preview saved favorites
+* 🧠 Speech support: tap `EN` or `粵` to hear item names in English or Cantonese
+* 🧭 Restaurant links to view more
+* ✅ Toast + Alert messages for feedback (e.g., "Added to Favorites", "End of List")
 
-   ```bash
-   npx expo start
-   ```
+## 🛠 Tech Stack
 
-In the output, you'll find options to open the app in a
+* React Native + Expo SDK 53
+* TypeScript
+* Context API for Favorites state
+* `expo-speech` for voice playback
+* `expo-router` for navigation
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📂 Structure
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+/components
+  - MenuItemCard.tsx
+  - MenuItemPreviewCard.tsx
+/contexts
+  - FavoriteContext.tsx
+/data
+  - globalMenu.ts
+  - restaurantData.ts
+/app
+  - favorites.tsx
+  - [restaurantId].tsx
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🚀 Getting Started
 
-## Learn more
+```bash
+git clone https://github.com/your-username/cancun-menu-app.git
+cd cancun-menu-app
+npm install
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🗣 Notes
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+> Cantonese voice support uses `"zh-HK"` via `expo-speech`. Make sure your device supports the language pack.
