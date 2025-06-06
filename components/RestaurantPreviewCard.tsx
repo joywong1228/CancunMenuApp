@@ -1,3 +1,7 @@
+/* 
+this is a abdoned component that was used in the CancunMenuApp project.
+*/
+
 import React from "react";
 import {
   View,

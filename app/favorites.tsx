@@ -12,7 +12,7 @@ import { moonPalaceRestaurants } from "@/data/restaurantData";
 import { router } from "expo-router";
 
 import MenuItemCard from "@/components/MenuItemCard";
-import RestaurantPreviewCard from "@/components/RestaurantPreviewCard";
+import MenuItemPreviewCard from "../components/MenuItemPreview";
 
 export default function FavoritesPage() {
   const { favoriteIds, toggleFavorite } = useFavorites();
@@ -84,7 +84,7 @@ export default function FavoritesPage() {
         <Text style={styles.backText}>← Back</Text>
       </TouchableOpacity>
 
-      <RestaurantPreviewCard
+      <MenuItemPreviewCard
         visible={!!selectedItem}
         item={
           selectedItem
@@ -118,6 +118,8 @@ export default function FavoritesPage() {
             setSelectedIndex(selectedIndex - 1);
           }
         }}
+        isFirst={selectedIndex === 0}
+        isLast={selectedIndex === favorites.length - 1}
       />
     </View>
   );

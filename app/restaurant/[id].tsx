@@ -168,6 +168,8 @@ export default function RestaurantDetailPage() {
           if (selectedIndex !== null && selectedIndex > 0)
             setSelectedIndex(selectedIndex - 1);
         }}
+        isFirst={selectedIndex === 0}
+        isLast={selectedIndex === filteredMenu.length - 1}
       />
     </View>
   );
